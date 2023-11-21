@@ -1,7 +1,7 @@
 from gensim.models import KeyedVectors
 class WordVecModel:
     def __init__(self, file_path):
-        self.model = KeyedVectors.load_word2vec_format(file_path, binary=False)
+        self.model = KeyedVectors.load_word2vec_format(file_path, binary=False, encoding='UTF-8')
 
     def get_vector(self, word):
         return self.model[word] if word in self.model.key_to_index else None

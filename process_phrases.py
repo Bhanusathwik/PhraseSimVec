@@ -5,17 +5,17 @@ from scipy.spatial.distance import cosine
 import numpy as np
 from tqdm import tqdm
 
-print("1")
+
 
 model = WordVecModel('data/vectors.csv')
 
-print("2")
+
 
 
 phrases_df = pd.read_csv('data/phrases.csv', encoding='ISO-8859-1')
 phrases = phrases_df['Phrases'].tolist()
 
-print("3")
+
 
 
 phrase_vectors = [phrase_vector(phrase, model) for phrase in tqdm(phrases)]

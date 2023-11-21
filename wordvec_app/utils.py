@@ -3,7 +3,6 @@ import pandas as pd
 from nltk.tokenize import word_tokenize
 import nltk
 
-# Ensure nltk resources are downloaded (needed for tokenization)
 nltk.download('punkt')
 
 def phrase_vector(phrase, model):
@@ -17,18 +16,3 @@ def phrase_vector(phrase, model):
     return norm_vector
 
 
-def load_phrases(file_path):
-    phrases_df = pd.read_csv(file_path)
-    return phrases_df['phrase'].tolist()
-
-def find_closest_match(input_vec, phrase_vectors, phrases):
-    min_distance = float('inf')
-    closest_match = None
-    closest_index = -1
-    for i, vec in enumerate(phrase_vectors):
-        distance = np.linalg.norm(input_vec - vec)  # Euclidean distance
-        if distance < min_distance:
-            min_distance = distance
-            closest_match = phrases[i]
-            closest_index = i
-    return closest_match, closest_index
